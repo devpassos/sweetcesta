@@ -1,7 +1,7 @@
 package br.com.sweetcesta.dto;
 
 
-public class ProdutosDTO {
+public class ProdutoDTO {
 
     String nome, descricao;
     double valor;

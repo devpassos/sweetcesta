@@ -1,26 +1,27 @@
-package br.com.sweetcesta.Entities;
+package br.com.sweetcesta.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 @Entity
-public class Produto {
+@ApplicationScoped
+public class ProdutoEntity extends PanacheEntity {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //para especificar que o valor do id é gerado automaticamente pelo banco de dados 
-    Long id;
     String nome;
     String descricao;
     double valor;
 
-    public Produto(String nome, String descricao, double valor) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.valor = valor;
 
+
+    public static ProdutoEntity findByName(String nome) {
+
+        return find("nome", nome).firstResult();
+
+
+    
     }
+
 
     public Long getId() {
         return id;
